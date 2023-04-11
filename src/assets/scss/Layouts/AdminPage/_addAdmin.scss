@@ -1,0 +1,195 @@
+.add-modal, .update-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(49,49,49,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    z-index: -1;
+    transition: all .3s;
+    transform: translateY(-30px);
+    @include res(md){
+        width: 100%;
+    }
+    .modal__container{
+        width: 50%;
+        margin: auto;
+        @include res(xl){
+            width: 70%;
+        }
+        @include res(md){
+            width: 90%;
+        }
+        @include res(sm){
+            width: 90%;
+        }
+        .modal__content{
+            width: 100%;
+            background: #fff;
+            @include form();
+            padding: 40px 20px;
+            border-radius: 5px;
+            box-shadow: 0 1px 10px #0a4b3e48;
+            position: relative;
+            
+            .close-modal{
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                cursor: pointer;
+                i{
+                    font-size: 25px;
+                    color: #17a98c;
+                }
+            }
+            h2{
+                text-align: center;
+                font-weight:700;
+                font-size: 30px;
+                color: #17a98c;
+                margin-bottom: 20px;
+            }
+            .form{
+                max-width: 550px;
+                .form__content{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+
+                    .form__input{
+                        width: 100%;
+                        i,span{
+                            font-size: 16px;
+                        } 
+                    }
+                    .form__input.cert, .form__input.skill{
+                        .input-content{
+                            border-bottom: 2px solid #17a98c;
+                            >i{
+                                color: #17a98c
+                            }
+                            >span{
+                                color: #17a98c;
+                                font-size: 13px;
+                                color: #17a98c;
+                                transform: translate(5px, -20px);
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                    @include handleForm();
+                    
+                }
+
+                @include btnSubmit();
+                .form__gender{
+                    width: 49%;
+                    height: 55px;
+                    display: flex;
+                    align-items: start;
+                    .gender__tilte{
+                        display: flex;
+                        align-items: center;
+                        > i {
+                            font-size: 16px;
+                            color: #d9d9d9;
+                            transition: all .3s;
+                            margin-right: 5px;
+                        }
+                        > span{
+                            color: #d9d9d9;
+                            transition: all .3s;
+                            font-weight: 600;
+                            font-size: 16px;
+                            margin-right:  10px;
+                        }
+                    }
+
+                    > input {
+                        display: none;
+                    }
+
+                    #male:checked ~ .gender__tilte i, #female:checked ~ .gender__tilte i{
+                        color: #17a98c;
+                    }
+                    #male:checked ~ .gender__tilte span, #female:checked ~ .gender__tilte span{
+                        color: #17a98c;
+                    }
+
+
+                    #male:checked ~ .category label span.dot-male{
+                        border-color: #bdede3;
+                        background: #17a98c;
+                    }
+                    #female:checked ~ .category label span.dot-female{
+                        border-color: #bdede3;
+                        background: #17a98c;
+                    }
+
+                    .category{
+                        display: flex;
+                        align-items: center;
+                        label{
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 0;
+                            margin-right: 10px;
+                            cursor: pointer;
+                            span.dot{
+                                display: inline-block;
+                                width: 18px;
+                                height: 18px;
+                                background: #bdede3;
+                                border-radius: 50%;
+                                margin-right: 5px;
+                                border: 5px solid transparent;
+                            }
+                            span.gender{
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                    p{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.add-modal.active, .update-modal.active{
+    opacity: 1;
+    z-index: 999;
+    transform: translateY(0);
+}
+.update-modal.update-user{
+    form{
+        @include res(sm){
+            height: 400px;
+            overflow: auto;
+        }
+        .form__content{
+            @include res(sm){
+                flex-direction: column;
+                padding: 10px 0;
+                .form__gender{
+                    width: 100% !important;
+
+                }
+            }
+            .form__input{
+                width: 49% !important;
+                @include res(sm){
+                    width: 100% !important;
+                }
+            }
+            
+        }
+    }
+}
