@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Slick, { Settings } from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const HomeCarousel = (props: Props) => {
-  const [param, setParam] = useState<string>("");
+  const [param, setParam] = useState("");
   const navigate = useNavigate();
 
   const slickSettings: Settings = {

@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { jobMenuAPI } from "../../redux/jobMenuReducer/jobMenuReducer";
-import { DispatchType, StateType } from "../../redux/configStore";
-import { useDispatch, useSelector } from 'react-redux'
 import { DsChiTietLoai, DsNhomChiTietLoai, JobMenuModel } from "../../Models/jobMenu/jobMenuModel";
+import { jobMenu } from "../../util/api";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [navbar, setNavbar] = useState<boolean>(false);
-  const dispatch:DispatchType = useDispatch();
-  const { arrJobMenu } = useSelector((state: StateType) => state.jobMenuReducer)
+  const [data, setData] = useState<JobMenuModel[]>([])
   const showNavbar = () => {
     window.scrollY >= 150 ? setNavbar(true) : setNavbar(false);
   };
 
   window.addEventListener("scroll", showNavbar);
 
-  
+  const getJobMenu = async () => {
+    const result = await jobMenu.getJobMenu();
+    setData(result)
+  }
+
 
   useEffect(() => {
     getJobMenu();
   }, [])
-
-  const getJobMenu = () => {
-    const actionJobMenu = jobMenuAPI();
-    dispatch(actionJobMenu);
-  }
-
   return (
     <nav className={navbar ? "nav__wrapper navbar-active" : "nav__wrapper"}>
       <div className="navbar__container width-container">
         <ul className="navbar-list">
-          {arrJobMenu.map((job:JobMenuModel, t:number) => {
+          {data.map((job:JobMenuModel, t:number) => {
             return <li key={t}>
             <NavLink to={`/type/${job.id}`} onClick={() => {window.scrollTo({ top: 0, behavior: 'smooth' })}}>{job.tenLoaiCongViec}</NavLink>
             <div className="navbar-menu">

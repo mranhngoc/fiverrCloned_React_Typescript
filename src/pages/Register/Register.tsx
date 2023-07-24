@@ -1,14 +1,14 @@
 import { useFormik } from 'formik';
-import React, { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom';
-import { RegisterModel } from '../../Models/registerModel/registerModels';
-import * as yup from 'yup';
-import { loadingAction, resgisterAPI } from '../../redux/userReducer/userReducer';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DispatchType, StateType } from '../../redux/configStore';
-import 'react-toastify/dist/ReactToastify.css';
+import { NavLink, useNavigate } from 'react-router-dom';
 import BeatLoader from "react-spinners/BeatLoader";
 import HashLoader from "react-spinners/HashLoader";
+import 'react-toastify/dist/ReactToastify.css';
+import * as yup from 'yup';
+import { RegisterModel } from '../../Models/registerModel/registerModels';
+import { DispatchType, StateType } from '../../redux/configStore';
+import { resgisterAPI } from '../../redux/userReducer/userReducer';
 import { regexName, regexPhone } from '../../util/config';
 
 type Props = {}

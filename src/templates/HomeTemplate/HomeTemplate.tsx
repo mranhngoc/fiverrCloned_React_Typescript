@@ -1,10 +1,9 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/Header/Header';
+import { ToastContainer } from 'react-toastify';
 import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
 import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { ToastContainer } from 'react-toastify';
 
 type Props = {}
 

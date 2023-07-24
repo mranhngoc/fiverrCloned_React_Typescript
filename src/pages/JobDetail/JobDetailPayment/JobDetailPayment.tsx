@@ -183,7 +183,6 @@ const JobDetailPayment = (props: Props) => {
               </svg>
             </td>
           </tr>
-
           <tr className="number">
             <td>Number of pages</td>
             <td>1</td>
@@ -202,7 +201,7 @@ const JobDetailPayment = (props: Props) => {
             <td>
               <div>
                 <label>
-                  <input type="radio" name="2" value={2} checked />
+                  <input type="radio" name="2" value={2} defaultChecked/>
                   <span>2 days</span>
                 </label>
                 <label>
@@ -215,7 +214,7 @@ const JobDetailPayment = (props: Props) => {
             <td>
               <div>
                 <label>
-                  <input type="radio" name="10" value={10} checked />
+                  <input type="radio" name="10" value={10} defaultChecked />
                   <span>10 days</span>
                 </label>
                 <label>

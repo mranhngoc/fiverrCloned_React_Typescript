@@ -1,6 +1,5 @@
-import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 type Props = {}
 

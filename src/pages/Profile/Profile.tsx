@@ -1,13 +1,12 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { DispatchType } from "../../redux/configStore";
+import { getJobHiredAPI, profileAPI } from "../../redux/userReducer/userReducer";
+import { USER_LOGIN, getStoreJson } from '../../util/config';
 import ProfileLeft from "./ProfileLeft";
 import ProfileRight from "./ProfileRight";
-import { getJobHiredAPI, profileAPI } from "../../redux/userReducer/userReducer";
-import {  USER_LOGIN, getStoreJson } from '../../util/config';
-import { DispatchType, StateType } from "../../redux/configStore";
-import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import { history } from "../..";
-import { ToastContainer, toast } from 'react-toastify';
 
 type Props = {};
 
