@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { PostComment, ThueCongViec } from '../Models/jobDetail/jobDetailModel';
 import { http } from './config';
 
@@ -73,6 +74,7 @@ export const jobDetail = {
   hireJob: async (value: ThueCongViec) => {
     try {
       await http.post('/thue-cong-viec', value);
+      toast.success(`Getting hire successfully.`, { autoClose: 3000 });
     } catch (error) {
       console.log(error);
     }

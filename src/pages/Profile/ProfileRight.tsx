@@ -1,8 +1,7 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { DispatchType, StateType } from "../../redux/configStore";
-import { NavLink, useNavigate } from "react-router-dom";
-import { deleteJobHiredAPI, getJobHiredAPI } from "../../redux/userReducer/userReducer";
+import { deleteJobHiredAPI } from "../../redux/userReducer/userReducer";
 
 type Props = {};
 

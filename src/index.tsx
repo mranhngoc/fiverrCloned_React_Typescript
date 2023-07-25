@@ -20,6 +20,7 @@ import { store } from './redux/configStore';
 import HomeTemplate from './templates/HomeTemplate/HomeTemplate';
 import LoginTemplate from './templates/LoginTemplate/LoginTemplate';
 
+
 export const history: any = createBrowserHistory();
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -50,6 +51,7 @@ root.render(
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
         </Route>
+     
       </Routes>
     </HistoryRouter>
   </Provider>

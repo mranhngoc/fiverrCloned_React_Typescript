@@ -1,43 +1,44 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { DispatchType } from "../../redux/configStore";
-import { getJobHiredAPI, profileAPI } from "../../redux/userReducer/userReducer";
+import { DispatchType } from '../../redux/configStore';
+import {
+  getJobHiredAPI,
+  profileAPI,
+} from '../../redux/userReducer/userReducer';
 import { USER_LOGIN, getStoreJson } from '../../util/config';
-import ProfileLeft from "./ProfileLeft";
-import ProfileRight from "./ProfileRight";
+import ProfileLeft from './ProfileLeft';
+import ProfileRight from './ProfileRight';
 
-type Props = {};
 
-const Profile = (props: Props) => {
-  const dispatch:DispatchType = useDispatch();
+const Profile = () => {
+  const dispatch: DispatchType = useDispatch();
   const navigate = useNavigate();
-  
+
   const getProfile = () => {
     const user = getStoreJson(USER_LOGIN);
-    if(user) {
+    if (user) {
       const action = profileAPI(user.id);
-      dispatch(action)
-    } else{
-      toast.info("Login to continue.", {autoClose: 3000})
-      navigate("/")
+      dispatch(action);
+    } else {
+      toast.info('Login to continue.', { autoClose: 3000 });
+      navigate('/');
     }
-  }
+  };
 
   const getJobHired = () => {
-    dispatch(getJobHiredAPI())
-  }
+    dispatch(getJobHiredAPI());
+  };
   useEffect(() => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
     getJobHired();
     getProfile();
-  }
-  ,[])
+  }, []);
 
   return (
-    <div className="profile">
-      <div className="profile--content width-container">
+    <div className='profile'>
+      <div className='profile--content width-container'>
         <ProfileLeft />
         <ProfileRight />
       </div>

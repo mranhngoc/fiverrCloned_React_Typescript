@@ -1,28 +1,23 @@
-import { useFormik } from 'formik'
-import React, { useEffect, useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { LoginModel } from '../../Models/loginModel/loginModel'
-import * as yup from "yup";
+import { useFormik } from 'formik';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import BeatLoader from "react-spinners/BeatLoader";
 import HashLoader from "react-spinners/HashLoader";
+import * as yup from "yup";
+import { LoginModel } from '../../Models/loginModel/loginModel';
+import { DispatchType } from '../../redux/configStore';
 import { loginAPI } from '../../redux/userReducer/userReducer';
-import { DispatchType, StateType } from '../../redux/configStore';
-import { useDispatch, useSelector } from 'react-redux';
-import { history } from '../..';
 type Props = {}
 
 const Login = (props: Props) => {
 
   const [password, setPassword] = useState<boolean>(false)
   const [load, setLoad] = useState<boolean>(false)
-  const { loading, userLogin } = useSelector((state:StateType) => state.userReducer)
+  const [loading, setLoading] = useState<boolean>(false);
+  
   const dispatch:DispatchType = useDispatch();
-  const navigate = useNavigate();
-  // useEffect(() => {
-  //   if(userLogin){
-  //     navigate("/")
-  //   }
-  // }, [])
+
 
   const formLog = useFormik<LoginModel>({
     initialValues: {
@@ -37,6 +32,7 @@ const Login = (props: Props) => {
       const actionLogin = loginAPI(values);
       dispatch(actionLogin)
       setTimeout(() => {setLoad(false)},2000)
+      setLoading(true)
     }
   })
 
